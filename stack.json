@@ -1,0 +1,6 @@
+{
+  "label": "Go — terraskye/eventsourcing (SQLite by default)",
+  "kitSubdir": "build-kit",
+  "useShared": true,
+  "needsBoardId": true
+}
