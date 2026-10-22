@@ -1,0 +1,70 @@
+// esgen wrote this file once; it is yours.
+//
+// wiring.go is the only file that knows the backend. Everything else — the
+// slices, their tests, app_gen.go — depends on the library's interfaces
+// (eventsourcing.EventStore, eventsourcing.GlobalReader,
+// eventsourcing.EventBus, projection.Store). To move to Postgres or
+// KurrentDB, replace this file; see docs/how-to/switch-backend.md in the
+// build kit.
+
+package main
+
+import (
+	"context"
+	"errors"
+	"time"
+
+	"github.com/terraskye/eventsourcing"
+	"github.com/terraskye/eventsourcing/projection"
+	"github.com/terraskye/eventsourcing/sqlite"
+)
+
+// eventStore is what the slices need from the event store: streams for the
+// command handlers, and the global log for the projection runners.
+type eventStore interface {
+	eventsourcing.EventStore
+	eventsourcing.GlobalReader
+}
+
+// infra is the backend: SQLite, one database file for the event store, the
+// event bus and the projection store.
+type infra struct {
+	Events eventStore
+	Bus    eventsourcing.EventBus
+	// Projections keeps projection checkpoints in the database, for read
+	// models that live there too. The generated read models live in
+	// memory and replay on start, so app_gen.go gives them in-memory
+	// checkpoints instead.
+	Projections projection.Store
+
+	close func() error
+}
+
+// Close stops the event bus and closes the database.
+func (i *infra) Close() error { return i.close() }
+
+// testDatabase is the database TestApp runs against: a fresh in-memory
+// one. Return "" to skip TestApp.
+func testDatabase() string { return ":memory:" }
+
+// openInfra opens the SQLite database at dsn (a file path, or ":memory:"),
+// creates its tables, and builds the backend on it.
+func openInfra(ctx context.Context, dsn string) (*infra, error) {
+	db, err := sqlite.Open(dsn)
+	if err != nil {
+		return nil, err
+	}
+	if _, err := db.ExecContext(ctx, sqlite.Schema); err != nil {
+		db.Close()
+		return nil, err
+	}
+	bus := sqlite.NewEventBus(db, 200*time.Millisecond)
+	return &infra{
+		Events:      sqlite.NewEventStore(db),
+		Bus:         bus,
+		Projections: sqlite.NewProjectionStore(db),
+		close: func() error {
+			return errors.Join(bus.Close(), db.Close())
+		},
+	}, nil
+}

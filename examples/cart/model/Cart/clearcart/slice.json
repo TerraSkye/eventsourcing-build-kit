@@ -1,0 +1,290 @@
+{
+  "id": "725d24eb-627f-5706-942e-c0b90d5492fc",
+  "status": "Planned",
+  "title": "Clear Cart",
+  "context": "Cart",
+  "sliceType": "STATE_CHANGE",
+  "commands": [
+    {
+      "id": "f117b24e-a7e6-5a0b-a7df-72bc2a421f71",
+      "tags": [],
+      "modelContext": "Cart",
+      "slice": "Clear Cart",
+      "title": "Clear Cart",
+      "fields": [
+        {
+          "name": "cartId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": true,
+          "generated": false
+        }
+      ],
+      "type": "COMMAND",
+      "description": "",
+      "aggregate": "cart",
+      "aggregateDependencies": [],
+      "dependencies": [
+        {
+          "id": "98a4db0f-f526-5514-b424-c21994935f4d",
+          "type": "OUTBOUND",
+          "title": "Cart Cleared",
+          "elementType": "EVENT"
+        }
+      ],
+      "apiEndpoint": "",
+      "createsAggregate": false,
+      "triggers": [],
+      "elementCopy": false,
+      "linkedId": "f117b24e-a7e6-5a0b-a7df-72bc2a421f71",
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "events": [
+    {
+      "id": "98a4db0f-f526-5514-b424-c21994935f4d",
+      "tags": [],
+      "modelContext": "Cart",
+      "slice": "Clear Cart",
+      "title": "Cart Cleared",
+      "fields": [
+        {
+          "name": "cartId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": true,
+          "generated": false
+        }
+      ],
+      "type": "EVENT",
+      "description": "",
+      "aggregate": "cart",
+      "aggregateDependencies": [],
+      "dependencies": [
+        {
+          "id": "f117b24e-a7e6-5a0b-a7df-72bc2a421f71",
+          "type": "INBOUND",
+          "title": "Clear Cart",
+          "elementType": "COMMAND"
+        },
+        {
+          "id": "b21e6ffb-0205-5f06-a297-0492c928e26e",
+          "type": "OUTBOUND",
+          "title": "Cart Items",
+          "elementType": "READMODEL"
+        }
+      ],
+      "apiEndpoint": "",
+      "createsAggregate": false,
+      "triggers": [],
+      "elementCopy": false,
+      "linkedId": "98a4db0f-f526-5514-b424-c21994935f4d",
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "readmodels": [],
+  "screens": [],
+  "screenImages": [],
+  "screenLayouts": [],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "66eeb9fd-9bbf-57b0-a52c-d970245c787d",
+      "title": "Clearing a cart",
+      "linkedId": "f117b24e-a7e6-5a0b-a7df-72bc2a421f71",
+      "given": [
+        {
+          "id": "f6a5efed-9837-5888-8d90-96574263cd7d",
+          "title": "Cart Created",
+          "type": "SPEC_EVENT",
+          "index": 0,
+          "tags": [],
+          "linkedId": "1ec74561-002b-594a-90de-a6cc976e7fca",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            }
+          ]
+        },
+        {
+          "id": "461d28e0-88a9-5f0a-b916-cb523935eb5a",
+          "title": "Item Added",
+          "type": "SPEC_EVENT",
+          "index": 1,
+          "tags": [],
+          "linkedId": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b11",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Espresso beans",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "12.5",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "when": [
+        {
+          "id": "f5c72e63-66b7-5244-9e3d-5e0fa107869f",
+          "title": "Clear Cart",
+          "type": "SPEC_COMMAND",
+          "index": 0,
+          "tags": [],
+          "linkedId": "f117b24e-a7e6-5a0b-a7df-72bc2a421f71",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "then": [
+        {
+          "id": "1e4c3fe8-f057-5bdb-89f2-1e7e29de8626",
+          "title": "Cart Cleared",
+          "type": "SPEC_EVENT",
+          "index": 0,
+          "tags": [],
+          "linkedId": "98a4db0f-f526-5514-b424-c21994935f4d",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": "81c3f8cf-53cf-53f9-a6e6-79d375671e3b",
+      "title": "A cart that does not exist cannot be cleared",
+      "linkedId": "f117b24e-a7e6-5a0b-a7df-72bc2a421f71",
+      "given": [],
+      "when": [
+        {
+          "id": "f5c72e63-66b7-5244-9e3d-5e0fa107869f",
+          "title": "Clear Cart",
+          "type": "SPEC_COMMAND",
+          "index": 0,
+          "tags": [],
+          "linkedId": "f117b24e-a7e6-5a0b-a7df-72bc2a421f71",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "then": [
+        {
+          "id": "a5e85353-32ca-5f06-a6d3-bd57277d3b52",
+          "title": "Cart not found",
+          "type": "SPEC_ERROR",
+          "index": 0,
+          "tags": []
+        }
+      ],
+      "comments": []
+    }
+  ],
+  "storylines": [],
+  "chapter": "Cart",
+  "codeGen": {},
+  "notes": [],
+  "comments": [],
+  "aggregates": [
+    "cart"
+  ]
+}

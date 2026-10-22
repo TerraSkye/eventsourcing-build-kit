@@ -1,0 +1,1142 @@
+{
+  "id": "50c2e8de-7c6a-5d35-9a27-18341182003a",
+  "status": "Planned",
+  "title": "Add Item",
+  "context": "Cart",
+  "sliceType": "STATE_CHANGE",
+  "commands": [
+    {
+      "id": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+      "tags": [],
+      "modelContext": "Cart",
+      "slice": "Add Item",
+      "title": "Add Item",
+      "fields": [
+        {
+          "name": "cartId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": true,
+          "generated": false
+        },
+        {
+          "name": "itemId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": false,
+          "generated": false
+        },
+        {
+          "name": "productId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": false,
+          "generated": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": false,
+          "generated": false
+        },
+        {
+          "name": "price",
+          "type": "Double",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": false,
+          "generated": false
+        }
+      ],
+      "type": "COMMAND",
+      "description": "",
+      "aggregate": "cart",
+      "aggregateDependencies": [],
+      "dependencies": [
+        {
+          "id": "1ec74561-002b-594a-90de-a6cc976e7fca",
+          "type": "OUTBOUND",
+          "title": "Cart Created",
+          "elementType": "EVENT"
+        },
+        {
+          "id": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+          "type": "OUTBOUND",
+          "title": "Item Added",
+          "elementType": "EVENT"
+        }
+      ],
+      "apiEndpoint": "",
+      "createsAggregate": false,
+      "triggers": [],
+      "elementCopy": false,
+      "linkedId": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "events": [
+    {
+      "id": "1ec74561-002b-594a-90de-a6cc976e7fca",
+      "tags": [],
+      "modelContext": "Cart",
+      "slice": "Add Item",
+      "title": "Cart Created",
+      "fields": [
+        {
+          "name": "cartId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": true,
+          "generated": false
+        }
+      ],
+      "type": "EVENT",
+      "description": "",
+      "aggregate": "cart",
+      "aggregateDependencies": [],
+      "dependencies": [
+        {
+          "id": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+          "type": "INBOUND",
+          "title": "Add Item",
+          "elementType": "COMMAND"
+        },
+        {
+          "id": "b21e6ffb-0205-5f06-a297-0492c928e26e",
+          "type": "OUTBOUND",
+          "title": "Cart Items",
+          "elementType": "READMODEL"
+        }
+      ],
+      "apiEndpoint": "",
+      "createsAggregate": false,
+      "triggers": [],
+      "elementCopy": false,
+      "linkedId": "1ec74561-002b-594a-90de-a6cc976e7fca",
+      "sketched": false,
+      "comments": []
+    },
+    {
+      "id": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+      "tags": [],
+      "modelContext": "Cart",
+      "slice": "Add Item",
+      "title": "Item Added",
+      "fields": [
+        {
+          "name": "cartId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": true,
+          "generated": false
+        },
+        {
+          "name": "itemId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": false,
+          "generated": false
+        },
+        {
+          "name": "productId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": false,
+          "generated": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": false,
+          "generated": false
+        },
+        {
+          "name": "price",
+          "type": "Double",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": false,
+          "generated": false
+        }
+      ],
+      "type": "EVENT",
+      "description": "",
+      "aggregate": "cart",
+      "aggregateDependencies": [],
+      "dependencies": [
+        {
+          "id": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+          "type": "INBOUND",
+          "title": "Add Item",
+          "elementType": "COMMAND"
+        },
+        {
+          "id": "b21e6ffb-0205-5f06-a297-0492c928e26e",
+          "type": "OUTBOUND",
+          "title": "Cart Items",
+          "elementType": "READMODEL"
+        }
+      ],
+      "apiEndpoint": "",
+      "createsAggregate": false,
+      "triggers": [],
+      "elementCopy": false,
+      "linkedId": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "readmodels": [],
+  "screens": [],
+  "screenImages": [],
+  "screenLayouts": [],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "1beedd25-05c9-55a3-a1c8-8512444c522b",
+      "title": "Adding the first item creates the cart",
+      "linkedId": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+      "given": [],
+      "when": [
+        {
+          "id": "bd39c890-b9e3-58bd-b192-5cddcc009dec",
+          "title": "Add Item",
+          "type": "SPEC_COMMAND",
+          "index": 0,
+          "tags": [],
+          "linkedId": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b11",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Espresso beans",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "12.5",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "then": [
+        {
+          "id": "f6a5efed-9837-5888-8d90-96574263cd7d",
+          "title": "Cart Created",
+          "type": "SPEC_EVENT",
+          "index": 0,
+          "tags": [],
+          "linkedId": "1ec74561-002b-594a-90de-a6cc976e7fca",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            }
+          ]
+        },
+        {
+          "id": "461d28e0-88a9-5f0a-b916-cb523935eb5a",
+          "title": "Item Added",
+          "type": "SPEC_EVENT",
+          "index": 1,
+          "tags": [],
+          "linkedId": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b11",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Espresso beans",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "12.5",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": "8ff992a6-9846-56c5-85ac-1efc4a3ffa88",
+      "title": "Adding an item to an existing cart",
+      "linkedId": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+      "given": [
+        {
+          "id": "f6a5efed-9837-5888-8d90-96574263cd7d",
+          "title": "Cart Created",
+          "type": "SPEC_EVENT",
+          "index": 0,
+          "tags": [],
+          "linkedId": "1ec74561-002b-594a-90de-a6cc976e7fca",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            }
+          ]
+        },
+        {
+          "id": "461d28e0-88a9-5f0a-b916-cb523935eb5a",
+          "title": "Item Added",
+          "type": "SPEC_EVENT",
+          "index": 1,
+          "tags": [],
+          "linkedId": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b11",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Espresso beans",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "12.5",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "when": [
+        {
+          "id": "5eb4c9bf-f961-5e1b-84c1-886f2cd06509",
+          "title": "Add Item",
+          "type": "SPEC_COMMAND",
+          "index": 0,
+          "tags": [],
+          "linkedId": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b22",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c02",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Milk frother",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "39.95",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "then": [
+        {
+          "id": "15a0e045-bd5a-594b-bc02-a1caf7f7832b",
+          "title": "Item Added",
+          "type": "SPEC_EVENT",
+          "index": 0,
+          "tags": [],
+          "linkedId": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b22",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c02",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Milk frother",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "39.95",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": "d7cf304e-7107-5351-a2a2-f8daba360435",
+      "title": "A cart holds at most three items",
+      "linkedId": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+      "given": [
+        {
+          "id": "f6a5efed-9837-5888-8d90-96574263cd7d",
+          "title": "Cart Created",
+          "type": "SPEC_EVENT",
+          "index": 0,
+          "tags": [],
+          "linkedId": "1ec74561-002b-594a-90de-a6cc976e7fca",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            }
+          ]
+        },
+        {
+          "id": "461d28e0-88a9-5f0a-b916-cb523935eb5a",
+          "title": "Item Added",
+          "type": "SPEC_EVENT",
+          "index": 1,
+          "tags": [],
+          "linkedId": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b11",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Espresso beans",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "12.5",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        },
+        {
+          "id": "64727b34-163d-5bdb-a0a0-aacb479e4589",
+          "title": "Item Added",
+          "type": "SPEC_EVENT",
+          "index": 2,
+          "tags": [],
+          "linkedId": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b22",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c02",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Milk frother",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "39.95",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        },
+        {
+          "id": "d798a3fa-e92e-5eb8-9aac-43f332dd3118",
+          "title": "Item Added",
+          "type": "SPEC_EVENT",
+          "index": 3,
+          "tags": [],
+          "linkedId": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b11",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Espresso beans",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "12.5",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "when": [
+        {
+          "id": "5eb4c9bf-f961-5e1b-84c1-886f2cd06509",
+          "title": "Add Item",
+          "type": "SPEC_COMMAND",
+          "index": 0,
+          "tags": [],
+          "linkedId": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b22",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c02",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Milk frother",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "39.95",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "then": [
+        {
+          "id": "184ca878-3ad5-5397-a670-7b86995d58da",
+          "title": "Cart is full",
+          "type": "SPEC_ERROR",
+          "index": 0,
+          "tags": []
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": "f770ee34-c5c4-50a5-b953-f36d52e256aa",
+      "title": "A submitted cart takes no more items",
+      "linkedId": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+      "given": [
+        {
+          "id": "f6a5efed-9837-5888-8d90-96574263cd7d",
+          "title": "Cart Created",
+          "type": "SPEC_EVENT",
+          "index": 0,
+          "tags": [],
+          "linkedId": "1ec74561-002b-594a-90de-a6cc976e7fca",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            }
+          ]
+        },
+        {
+          "id": "461d28e0-88a9-5f0a-b916-cb523935eb5a",
+          "title": "Item Added",
+          "type": "SPEC_EVENT",
+          "index": 1,
+          "tags": [],
+          "linkedId": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b11",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Espresso beans",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "12.5",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        },
+        {
+          "id": "85c33b9d-d4b7-5921-aa19-77bccb32ee52",
+          "title": "Cart Submitted",
+          "type": "SPEC_EVENT",
+          "index": 2,
+          "tags": [],
+          "linkedId": "df617716-f1ed-5a7f-8dc0-b3932434c366",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "submittedAt",
+              "type": "DateTime",
+              "example": "",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": true
+            }
+          ]
+        }
+      ],
+      "when": [
+        {
+          "id": "5eb4c9bf-f961-5e1b-84c1-886f2cd06509",
+          "title": "Add Item",
+          "type": "SPEC_COMMAND",
+          "index": 0,
+          "tags": [],
+          "linkedId": "aff1d63d-19f3-5e6a-a048-e4cf66088352",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b22",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c02",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Milk frother",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "39.95",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "then": [
+        {
+          "id": "06221169-5a43-5b2a-9279-07b9d8064e31",
+          "title": "Cart already submitted",
+          "type": "SPEC_ERROR",
+          "index": 0,
+          "tags": []
+        }
+      ],
+      "comments": []
+    }
+  ],
+  "storylines": [],
+  "chapter": "Cart",
+  "codeGen": {},
+  "notes": [],
+  "comments": [],
+  "aggregates": [
+    "cart"
+  ]
+}

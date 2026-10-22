@@ -1,0 +1,367 @@
+{
+  "id": "e8c10053-957e-56c3-b5d6-5fec5cef15f3",
+  "status": "Planned",
+  "title": "Remove Item",
+  "context": "Cart",
+  "sliceType": "STATE_CHANGE",
+  "commands": [
+    {
+      "id": "90990c0f-a0db-5ed7-b405-db325ad38314",
+      "tags": [],
+      "modelContext": "Cart",
+      "slice": "Remove Item",
+      "title": "Remove Item",
+      "fields": [
+        {
+          "name": "cartId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": true,
+          "generated": false
+        },
+        {
+          "name": "itemId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": false,
+          "generated": false
+        }
+      ],
+      "type": "COMMAND",
+      "description": "",
+      "aggregate": "cart",
+      "aggregateDependencies": [],
+      "dependencies": [
+        {
+          "id": "b921d86c-2fe0-5f8e-8f68-4b68fe663e49",
+          "type": "OUTBOUND",
+          "title": "Item Removed",
+          "elementType": "EVENT"
+        }
+      ],
+      "apiEndpoint": "",
+      "createsAggregate": false,
+      "triggers": [],
+      "elementCopy": false,
+      "linkedId": "90990c0f-a0db-5ed7-b405-db325ad38314",
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "events": [
+    {
+      "id": "b921d86c-2fe0-5f8e-8f68-4b68fe663e49",
+      "tags": [],
+      "modelContext": "Cart",
+      "slice": "Remove Item",
+      "title": "Item Removed",
+      "fields": [
+        {
+          "name": "cartId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": true,
+          "generated": false
+        },
+        {
+          "name": "itemId",
+          "type": "UUID",
+          "example": "",
+          "mapping": "",
+          "optional": false,
+          "subfields": [],
+          "cardinality": "Single",
+          "idAttribute": false,
+          "generated": false
+        }
+      ],
+      "type": "EVENT",
+      "description": "",
+      "aggregate": "cart",
+      "aggregateDependencies": [],
+      "dependencies": [
+        {
+          "id": "90990c0f-a0db-5ed7-b405-db325ad38314",
+          "type": "INBOUND",
+          "title": "Remove Item",
+          "elementType": "COMMAND"
+        },
+        {
+          "id": "b21e6ffb-0205-5f06-a297-0492c928e26e",
+          "type": "OUTBOUND",
+          "title": "Cart Items",
+          "elementType": "READMODEL"
+        }
+      ],
+      "apiEndpoint": "",
+      "createsAggregate": false,
+      "triggers": [],
+      "elementCopy": false,
+      "linkedId": "b921d86c-2fe0-5f8e-8f68-4b68fe663e49",
+      "sketched": false,
+      "comments": []
+    }
+  ],
+  "readmodels": [],
+  "screens": [],
+  "screenImages": [],
+  "screenLayouts": [],
+  "processors": [],
+  "tables": [],
+  "specifications": [
+    {
+      "id": "df01453c-1c79-58d8-972c-ab4003170986",
+      "title": "Removing an item from the cart",
+      "linkedId": "90990c0f-a0db-5ed7-b405-db325ad38314",
+      "given": [
+        {
+          "id": "f6a5efed-9837-5888-8d90-96574263cd7d",
+          "title": "Cart Created",
+          "type": "SPEC_EVENT",
+          "index": 0,
+          "tags": [],
+          "linkedId": "1ec74561-002b-594a-90de-a6cc976e7fca",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            }
+          ]
+        },
+        {
+          "id": "461d28e0-88a9-5f0a-b916-cb523935eb5a",
+          "title": "Item Added",
+          "type": "SPEC_EVENT",
+          "index": 1,
+          "tags": [],
+          "linkedId": "2ae3d259-1236-51ad-8fca-258bcd1bcf3f",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b11",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "productId",
+              "type": "UUID",
+              "example": "9a1d7c55-3e2b-4f6a-b8c4-7e5d3a2f1c01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "description",
+              "type": "String",
+              "example": "Espresso beans",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            },
+            {
+              "name": "price",
+              "type": "Double",
+              "example": "12.5",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "when": [
+        {
+          "id": "798a4062-58a5-5c04-a900-66f2708f1301",
+          "title": "Remove Item",
+          "type": "SPEC_COMMAND",
+          "index": 0,
+          "tags": [],
+          "linkedId": "90990c0f-a0db-5ed7-b405-db325ad38314",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b11",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "then": [
+        {
+          "id": "d982b28f-8ed0-55b1-92dc-ee408148d3be",
+          "title": "Item Removed",
+          "type": "SPEC_EVENT",
+          "index": 0,
+          "tags": [],
+          "linkedId": "b921d86c-2fe0-5f8e-8f68-4b68fe663e49",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b11",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": "80c41fb2-b862-595e-8efe-26de55d7223f",
+      "title": "An empty cart has nothing to remove",
+      "linkedId": "90990c0f-a0db-5ed7-b405-db325ad38314",
+      "given": [
+        {
+          "id": "f6a5efed-9837-5888-8d90-96574263cd7d",
+          "title": "Cart Created",
+          "type": "SPEC_EVENT",
+          "index": 0,
+          "tags": [],
+          "linkedId": "1ec74561-002b-594a-90de-a6cc976e7fca",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "when": [
+        {
+          "id": "798a4062-58a5-5c04-a900-66f2708f1301",
+          "title": "Remove Item",
+          "type": "SPEC_COMMAND",
+          "index": 0,
+          "tags": [],
+          "linkedId": "90990c0f-a0db-5ed7-b405-db325ad38314",
+          "fields": [
+            {
+              "name": "cartId",
+              "type": "UUID",
+              "example": "5f6c4bde-4e2f-4a37-9a2c-1c7f0d8b9a01",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": true,
+              "generated": false
+            },
+            {
+              "name": "itemId",
+              "type": "UUID",
+              "example": "0b7e3d2a-6a4f-4c1e-8f3b-2d9c5e7a1b11",
+              "mapping": "",
+              "optional": false,
+              "subfields": [],
+              "cardinality": "Single",
+              "idAttribute": false,
+              "generated": false
+            }
+          ]
+        }
+      ],
+      "then": [
+        {
+          "id": "02bc8dcb-be1b-57e9-953e-3f8fbf1ca3cc",
+          "title": "Item not in cart",
+          "type": "SPEC_ERROR",
+          "index": 0,
+          "tags": []
+        }
+      ],
+      "comments": []
+    }
+  ],
+  "storylines": [],
+  "chapter": "Cart",
+  "codeGen": {},
+  "notes": [],
+  "comments": [],
+  "aggregates": [
+    "cart"
+  ]
+}

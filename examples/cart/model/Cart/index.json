@@ -1,0 +1,60 @@
+{
+  "slices": [
+    {
+      "id": "50c2e8de-7c6a-5d35-9a27-18341182003a",
+      "slice": "Add Item",
+      "index": 0,
+      "context": "Cart",
+      "folder": "additem",
+      "status": "Planned"
+    },
+    {
+      "id": "e8c10053-957e-56c3-b5d6-5fec5cef15f3",
+      "slice": "Remove Item",
+      "index": 1,
+      "context": "Cart",
+      "folder": "removeitem",
+      "status": "Planned"
+    },
+    {
+      "id": "725d24eb-627f-5706-942e-c0b90d5492fc",
+      "slice": "Clear Cart",
+      "index": 2,
+      "context": "Cart",
+      "folder": "clearcart",
+      "status": "Planned"
+    },
+    {
+      "id": "21dc0a2e-d2e9-5ed4-a9fe-096f283042c4",
+      "slice": "Submit Cart",
+      "index": 3,
+      "context": "Cart",
+      "folder": "submitcart",
+      "status": "Planned"
+    },
+    {
+      "id": "bac29ebe-271c-527a-a684-9a9cdb4291b7",
+      "slice": "Cart Items",
+      "index": 4,
+      "context": "Cart",
+      "folder": "cartitems",
+      "status": "Planned"
+    },
+    {
+      "id": "ca251b21-b30c-50ac-85d1-7cac9b2cfef6",
+      "slice": "Carts To Publish",
+      "index": 5,
+      "context": "Cart",
+      "folder": "cartstopublish",
+      "status": "Planned"
+    },
+    {
+      "id": "c5b38448-319f-504c-8597-57fa428063c7",
+      "slice": "Publish Cart",
+      "index": 6,
+      "context": "Cart",
+      "folder": "publishcart",
+      "status": "Planned"
+    }
+  ]
+}
